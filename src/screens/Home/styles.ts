@@ -19,11 +19,31 @@ export const styles = StyleSheet.create({
   form: {
     flexDirection: 'row',
   },
-  addButton: {
-
-  },
   input: {
     flex: 1,
     marginRight: 10
+  },
+  status: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 32,
+    paddingBottom: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: theme.colors.gray500
+  },
+  labelCriadas: {
+    fontFamily: theme.fonts.bold,
+    color: theme.colors.blue,
+    marginRight: 8
+  },
+  labelConcluida: {
+    fontFamily: theme.fonts.bold,
+    color: theme.colors.purple,
+    marginRight: 8
+  },
+  viewLabel: {
+    flexDirection: 'row',
+    alignItems: 'center'
   }
 })

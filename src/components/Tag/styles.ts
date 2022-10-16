@@ -7,7 +7,8 @@ export const styles = StyleSheet.create({
     height: 19,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: theme.colors.gray400
+    backgroundColor: theme.colors.gray400,
+    borderRadius: 10
   },
   count: {
     fontSize: theme.fontSizes.sm,
