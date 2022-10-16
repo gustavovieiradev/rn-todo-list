@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Image, ListRenderItem, StatusBar, Text, View } from 'react-native';
+import { Alert, FlatList, Image, ListRenderItem, StatusBar, Text, View } from 'react-native';
 import { Task } from '../../components/Task/input';
 import { styles } from './styles';
 
@@ -16,6 +16,17 @@ export const Home: React.FC = () => {
   const [text, setText] = useState('')
 
   function handleAdd() {
+    const exists = tasks.filter(item => item.title.includes(text))
+
+    if (exists.length > 0) {
+      return Alert.alert(
+        'Tarefa Existe',
+        "Já existe uma tarefa na lista com esse nome!"
+      )
+    } 
+
+    setTasks(prevState => [...prevState, {marked: false, title: text}]);
+    setText('')
 
   }
 
@@ -31,7 +42,6 @@ export const Home: React.FC = () => {
     return (
       <Task 
         task={item} 
-        onAdd={handleAdd} 
         onRemove={handleRemove} 
         onMark={handleMarked} 
       />
@@ -58,7 +68,7 @@ export const Home: React.FC = () => {
             />
           </View>
           <View>
-            <CreateButton />
+            <CreateButton onPress={handleAdd} />
           </View>
         </View>
         <View style={styles.status}>
@@ -67,11 +77,17 @@ export const Home: React.FC = () => {
             <Tag count={0} />
           </View>
           <View style={styles.viewLabel}>
-            <Text style={styles.labelConcluida}>Criadas</Text>
+            <Text style={styles.labelConcluida}>Concluídas</Text>
             <Tag count={0} />
           </View>
         </View>
-        <EmptyState />
+        
+        <FlatList 
+          renderItem={renderItem}
+          data={tasks}
+          keyExtractor={item => item.title}
+          ListEmptyComponent={EmptyState}
+        />
       </View>
     </View>
   )

@@ -14,6 +14,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '100%',
     minHeight: 64,
+    marginBottom: 8
   },
   textContent: {
     flex: 0.9,

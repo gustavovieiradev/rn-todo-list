@@ -7,12 +7,11 @@ import { styles } from './styles';
 
 interface Props {
   onRemove: () => void;
-  onAdd: () => void;
   onMark: () => void
   task: ITask;
 }
 
-export const Task: React.FC<Props> = ({onAdd, onRemove, task}) => {
+export const Task: React.FC<Props> = ({onRemove, task}) => {
   return (
     <View style={styles.container}>
         <Checkbox />

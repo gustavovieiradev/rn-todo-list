@@ -28,9 +28,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginTop: 32,
-    // paddingBottom: 20,
-    // borderBottomWidth: 1,
-    // borderBottomColor: theme.colors.gray500
+    marginBottom: 21,
   },
   labelCriadas: {
     fontFamily: theme.fonts.bold,

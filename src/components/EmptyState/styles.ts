@@ -3,7 +3,6 @@ import theme from "../../../layout/theme";
 
 export const styles = StyleSheet.create({
   container: {
-    marginTop: 21,
     alignItems: 'center',
     borderTopColor: theme.colors.gray400,
     borderTopWidth: 1,
