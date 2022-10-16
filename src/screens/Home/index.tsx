@@ -30,8 +30,21 @@ export const Home: React.FC = () => {
 
   }
 
-  function handleRemove() {
-
+  function handleRemove(name: string) {
+    Alert.alert(
+      'Remover',
+      `Deseja realmente remover a tarefa?`,
+      [
+        {
+          text: 'Sim',
+          onPress: () => setTasks(prevState => prevState.filter(task => task.title !== name))
+        },
+        {
+          text: 'Não',
+          style: 'cancel'
+        },
+      ]
+    )
   }
 
   function handleMarked() {
@@ -42,7 +55,7 @@ export const Home: React.FC = () => {
     return (
       <Task 
         task={item} 
-        onRemove={handleRemove} 
+        onRemove={() => handleRemove(item.title)} 
         onMark={handleMarked} 
       />
     );

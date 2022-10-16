@@ -18,7 +18,7 @@ export const Task: React.FC<Props> = ({onRemove, task}) => {
         <Text style={styles.textContent}>
           {task.title}
         </Text>
-        <DeleteButton />
+        <DeleteButton onPress={onRemove} />
     </View>
   )
 }
