@@ -8,6 +8,7 @@ import { Input } from '../../components/Input';
 import { CreateButton } from '../../components/Buttons/CreateButton';
 import { ITask } from '../../interfaces/task.interface';
 import { Tag } from '../../components/Tag';
+import { EmptyState } from '../../components/EmptyState';
 
 export const Home: React.FC = () => {
 
@@ -70,6 +71,7 @@ export const Home: React.FC = () => {
             <Tag count={0} />
           </View>
         </View>
+        <EmptyState />
       </View>
     </View>
   )
