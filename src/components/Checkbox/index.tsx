@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
+import { TouchableOpacity, TouchableOpacityProps} from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import theme from '../../../layout/theme';
 import { styles } from './styles';
 
-export const Checkbox: React.FC<TouchableOpacityProps> = ({...rest}) => {
+interface Props extends TouchableOpacityProps {
+  marked: boolean;
+}
+
+export const Checkbox: React.FC<Props> = ({marked, ...rest}) => {
   const [borderColor, setBorderColor] = useState(theme.colors.blue)
 
   function handlePressIn() {
@@ -15,13 +20,18 @@ export const Checkbox: React.FC<TouchableOpacityProps> = ({...rest}) => {
   }
 
   return (
-    <TouchableOpacity 
-      style={[styles.container, {borderColor}]}
-      onPressIn={handlePressIn}
-      onPressOut={handlePressOut}
-      {...rest}
-    >
+    <>  
+      <TouchableOpacity 
+        style={[styles.container, {borderColor: marked ? theme.colors.purple : borderColor, backgroundColor: marked ? theme.colors.purple : 'transparent'}]}
+        onPressIn={handlePressIn}
+        onPressOut={handlePressOut}
+        {...rest}
+      > 
+      {marked && (
+        <MaterialCommunityIcons name="check" size={12} color={theme.colors.gray100} />
+      )}
 
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </>
   )
 }

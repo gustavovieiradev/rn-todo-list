@@ -47,8 +47,11 @@ export const Home: React.FC = () => {
     )
   }
 
-  function handleMarked() {
-
+  function handleMarked(name: string) {
+    const newList = [...tasks];
+    const ix = newList.findIndex(item => item.title === name);
+    newList[ix].marked = !newList[ix].marked
+    setTasks(newList);
   }
 
   const renderItem: ListRenderItem<ITask> = ({ item }) => {
@@ -56,7 +59,7 @@ export const Home: React.FC = () => {
       <Task 
         task={item} 
         onRemove={() => handleRemove(item.title)} 
-        onMark={handleMarked} 
+        onMark={() => handleMarked(item.title)} 
       />
     );
   };
@@ -87,11 +90,11 @@ export const Home: React.FC = () => {
         <View style={styles.status}>
           <View style={styles.viewLabel}>
             <Text style={styles.labelCriadas}>Criadas</Text>
-            <Tag count={0} />
+            <Tag count={tasks.length} />
           </View>
           <View style={styles.viewLabel}>
             <Text style={styles.labelConcluida}>Concluídas</Text>
-            <Tag count={0} />
+            <Tag count={tasks.filter(t => t.marked).length} />
           </View>
         </View>
         

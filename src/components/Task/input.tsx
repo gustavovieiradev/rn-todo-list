@@ -11,11 +11,11 @@ interface Props {
   task: ITask;
 }
 
-export const Task: React.FC<Props> = ({onRemove, task}) => {
+export const Task: React.FC<Props> = ({onRemove, onMark,task}) => {
   return (
     <View style={styles.container}>
-        <Checkbox />
-        <Text style={styles.textContent}>
+        <Checkbox onPress={onMark} marked={task.marked} />
+        <Text style={[styles.textContent, {textDecorationLine: task.marked ? 'line-through' : 'none'}]}>
           {task.title}
         </Text>
         <DeleteButton onPress={onRemove} />
