@@ -13,9 +13,17 @@ export const styles = StyleSheet.create({
     alignItems: 'center'
   },
   content: {
-
+    paddingHorizontal: 16,
+    marginTop: -30
   },
   form: {
-    
+    flexDirection: 'row',
+  },
+  addButton: {
+
+  },
+  input: {
+    flex: 1,
+    marginRight: 10
   }
 })
